@@ -46,22 +46,22 @@ function! s:Init()
   else
     imap <script> <buffer> <SID>doctype <SID>html5
   endif
-  imap <script> <buffer> <C-X>! <SID>doctype
+  imap <script> <buffer> <C-C>! <SID>doctype
 
-  imap <silent> <buffer> <C-X># <C-R>=<SID>charsetTag()<CR>
+  imap <silent> <buffer> <C-C># <C-R>=<SID>charsetTag()<CR>
   inoremap <silent> <buffer> <SID>HtmlComplete <C-R>=<SID>htmlEn()<CR><C-X><C-O><C-P><C-R>=<SID>htmlDis()<CR><C-N>
-  imap     <buffer> <C-X>H <SID>HtmlComplete
-  inoremap <silent> <buffer> <C-X>$ <C-R>=<SID>javascriptIncludeTag()<CR>
-  inoremap <silent> <buffer> <C-X>@ <C-R>=<SID>stylesheetTag()<CR>
-  inoremap <silent> <buffer> <C-X><Space> <Esc>ciw<Lt><C-R>"<C-R>=<SID>tagextras()<CR>></<C-R>"><Esc>b2hi
-  inoremap <silent> <buffer> <C-X><CR> <Esc>ciw<Lt><C-R>"<C-R>=<SID>tagextras()<CR>><CR></<C-R>"><Esc>O
+  imap     <buffer> <C-C>H <SID>HtmlComplete
+  inoremap <silent> <buffer> <C-C>$ <C-R>=<SID>javascriptIncludeTag()<CR>
+  inoremap <silent> <buffer> <C-C>@ <C-R>=<SID>stylesheetTag()<CR>
+  inoremap <silent> <buffer> <C-C><Space> <Esc>ciw<Lt><C-R>"<C-R>=<SID>tagextras()<CR>></<C-R>"><Esc>b2hi
+  inoremap <silent> <buffer> <C-C><CR> <Esc>ciw<Lt><C-R>"<C-R>=<SID>tagextras()<CR>><CR></<C-R>"><Esc>O
   if exists("&omnifunc")
-    inoremap <silent> <buffer> <C-X>/ <Lt>/<C-R>=<SID>htmlEn()<CR><C-X><C-O><C-R>=<SID>htmlDis()<CR><C-F>
+    inoremap <silent> <buffer> <C-C>/ <Lt>/<C-R>=<SID>htmlEn()<CR><C-X><C-O><C-R>=<SID>htmlDis()<CR><C-F>
     if exists(":XMLns")
       XMLns xhtml10s
     endif
   else
-    inoremap <silent> <buffer> <C-X>/ <Lt>/><Left>
+    inoremap <silent> <buffer> <C-C>/ <Lt>/><Left>
   endif
   let g:surround_{char2nr("p")} = "<p>\n\t\r\n</p>"
   let g:surround_{char2nr("d")} = "<div\1div: \r^[^ ]\r &\1>\n\t\r\n</div>"
@@ -155,8 +155,8 @@ function! s:Init()
     setlocal commentstring=<!---%s--->
     let b:surround_35 = "<!--- \r --->"
   elseif &ft == "html" || &ft == "xml" || &ft == "xhtml"
-    inoremap <buffer> <C-X>'     <Lt>!--<Space><Space>--><Esc>3hi
-    inoremap <buffer> <C-X>"     <C-V><NL><Esc>I<!--<Space><Esc>A<Space>--><Esc>F<NL>s
+    inoremap <buffer> <C-C>'     <Lt>!--<Space><Space>--><Esc>3hi
+    inoremap <buffer> <C-C>"     <C-V><NL><Esc>I<!--<Space><Esc>A<Space>--><Esc>F<NL>s
     let b:surround_35 = "<!-- \r -->"
   elseif &ft == "django" || &ft == "htmldjango" || &ft == 'htmljinja'
     inoremap <buffer> <C-X>'     {#<Space><Space>#}<Esc>2hi
@@ -517,10 +517,10 @@ inoremap <silent> <Plug>ragtagUrlV      <C-R>=<SID>urlv()<CR>
 inoremap <silent> <Plug>ragtagXmlV      <C-R>="&#".getchar().";"<CR>
 
 if exists("g:ragtag_global_maps")
-  imap     <C-X>H      <Plug>ragtagHtmlComplete
-  imap     <C-X>/    </<Plug>ragtagHtmlComplete
-  imap     <C-X>%      <Plug>ragtagUrlEncode
-  imap     <C-X>&      <Plug>ragtagXmlEncode
+  imap     <C-C>H      <Plug>ragtagHtmlComplete
+  imap     <C-C>/    </<Plug>ragtagHtmlComplete
+  imap     <C-C>%      <Plug>ragtagUrlEncode
+  imap     <C-C>&      <Plug>ragtagXmlEncode
   imap     <C-V>%      <Plug>ragtagUrlV
   imap     <C-V>&      <Plug>ragtagXmlV
 endif
